@@ -1,0 +1,20 @@
+[
+  {
+    "password": "123",
+    "username": "hagay",
+    "name": "stam",
+    "ticketsforsale": 213
+  },
+  {
+    "password": "123",
+    "username": "hagay",
+    "eventname": "sta",
+    "ticketsforsale": 213
+  },
+  {
+    "password": "123",
+    "username": "hagay",
+    "eventname": "sa",
+    "ticketsforsale": 203
+  }
+]
