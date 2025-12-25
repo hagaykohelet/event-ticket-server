@@ -73,7 +73,7 @@ ticketRouter.post('/buy', async(req, res)=>{
         const events = await read(EVENTS_DATA) 
         const newObj = req.body
         let allowKeys = ["eventname","quantity","username","password"]
-        let check = events.filter((event)=> event.username === newObj.username)
+        let check = events.filter((event)=> event.eventname === newObj.eventname)
         if(check.length == 0){
             return res.json({message:"this event name and password not exist"})
         }
@@ -87,14 +87,15 @@ ticketRouter.post('/buy', async(req, res)=>{
                 if(newObj.quantity > element.ticketsforsale){
                     return res.send("not enough tickets")
                 }
-
-                element.ticketsforsale -= newObj.quantity
+                else{
+                element.ticketsforsale -= newObj.quantity}
             }
             
         });
         receipts.push(newObj)
         await write(RECEIPTS_DATA,receipts)
         await write(EVENTS_DATA,events)
+        res.send({newObj})
     }
     catch(err){
         res.json({error:err})
