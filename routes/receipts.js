@@ -86,13 +86,15 @@ ticketRouter.post('/buy', async(req, res)=>{
             if (element.eventname === newObj.eventname) {
                 if(newObj.quantity > element.ticketsforsale){
                     return res.send("not enough tickets")
+                    
                 }
                 else{
-                element.ticketsforsale -= newObj.quantity}
+                element.ticketsforsale -= newObj.quantity
+                receipts.push(newObj)}
+                
             }
             
         });
-        receipts.push(newObj)
         await write(RECEIPTS_DATA,receipts)
         await write(EVENTS_DATA,events)
         res.send({newObj})
