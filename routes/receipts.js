@@ -83,7 +83,6 @@ ticketRouter.post('/buy', async(req, res)=>{
             }
         }
         events.forEach(element => {
-            console.log(element);
             if (element.eventname === newObj.eventname) {
                 if(newObj.quantity > element.ticketsforsale){
                     return res.send("not enough tickets")
@@ -91,7 +90,6 @@ ticketRouter.post('/buy', async(req, res)=>{
 
                 element.ticketsforsale -= newObj.quantity
             }
-            
             
         });
         receipts.push(newObj)
